@@ -3,7 +3,7 @@ const checkSubscriberLogin= require('./checkSubscriberLogin.js');
 const TEST_SUBSCRIBER_EMAIL = process.env.subscriber_email_user;
 
 
-test('@subscriber@magic login receives email', async ({ page }) => {
+test('@623@subscriber@magic login receives email', async ({ page }) => {
 
   await page.goto("/account/forgot-password");
   await page.fill('#email', TEST_SUBSCRIBER_EMAIL);
@@ -30,5 +30,9 @@ test('@subscriber@magic login receives email', async ({ page }) => {
   await page.click('text=Sign In');
   await page.textContent('.card-title') === "Your subscriptions";
   console.log("Logged in as a subscriber");
+  //check subscriptions
+  await page.goto("/account/subscriptions");
+  await page.textContent('text=Subscriptions') === "Subscriptions";
+  await page.textContent('text=One-Off Soaps') === "One-Off Soaps";
 
 });

@@ -68,5 +68,5 @@ test.describe("order plan with only upfront charge tests:", () => {
         const subscriber_plan_title_content = await page.textContent('.subscription-title');
         expect(subscriber_plan_title_content === 'One-Off Soaps');
     });
-    subscriber_magic_login = require('./subscriber_magic_login');
+    subscriber_magic_login = require('./623_subscriber_magic_login');
 });
