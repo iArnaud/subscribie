@@ -82,9 +82,9 @@ jobs:
               PLAYWRIGHT_SLOWMO: 2000
               PLAYWRIGHT_HEADLESS: true
               # GLOBAL EMAIL SETTINGS #
-              imap_search_unseen="1"
-              imap_search_since_date="01-Sep-2021"
-              email_search_api_host="search-email.dokku.karmacomputing.co.uk"
+              imap_search_unseen: "1"
+              imap_search_since_date: "01-Sep-2021"
+              email_search_api_host: "search-email.dokku.karmacomputing.co.uk"
 
               # SUBSCRIBER EMAIL SETTINGS #
               subscriber_email_host: ${{ secrets.SUBSCRIBER_EMAIL_HOST }}
