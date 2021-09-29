@@ -25,5 +25,3 @@ test.beforeEach(async ({ page }) => {
   adding_vat = require('./tests/463_shop_owner_adding_vat');
 
   ordering_plan_with_VAT = require('./tests/463_subscriber_ordering_plan_with_VAT');
-
-  private_page_as_a_subscriber = require('./tests/334_subscriber_private_page');
