@@ -106,7 +106,7 @@ jobs:
           # SUBSCRIBER EMAIL SETTINGS #
           subscriber_email_host: ${{ secrets.SUBSCRIBER_EMAIL_HOST }}
           subscriber_email_user: ${{ secrets.SUBSCRIBER_EMAIL_USER }}
-          reset_password_imap_search_subject: Password Reset
+          reset_password_imap_search_subject: "Password Reset"
           subscriber_email_password: ${{ secrets.SUBSCRIBER_EMAIL_PASSWORD }}
 
         run: |
