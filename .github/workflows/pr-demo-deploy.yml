@@ -105,7 +105,7 @@ jobs:
           reset_password_imap_search_subject: "Password Reset"
           imap_search_unseen: "1"
           imap_search_since_date: "01-Sep-2021"
-
+          EMAIL_QUEUE_FOLDER: ${{ secrets.EMAIL_QUEUE_PATH }}
         run: |
           set -x
           cp tests/browser-automated-tests-playwright/.env.example tests/browser-automated-tests-playwright/.env
