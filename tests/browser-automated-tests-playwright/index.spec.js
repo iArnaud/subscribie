@@ -172,6 +172,8 @@ test.describe("Subscribie tests:", () => {
 
   order_plan_with_only_upfront_charge = require('./tests/293_subscriber_order_plan_with_only_upfront_charge');
 
+  private_page_as_a_subscriber = require('./tests/334_subscriber_private_page');
+
   order_plan_with_free_trial = require('./tests/475_subscriber_order_plan_with_free_trial');
   // When you run order subscription and upfront charge, it will run 2 more tests that are inside:
   // 1. Transacion filter by name and plan title
