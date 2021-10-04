@@ -53,6 +53,7 @@ jobs:
           ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} STRIPE_TEST_PUBLISHABLE_KEY=${{ secrets.STRIPE_TEST_PUBLISHABLE_KEY }}"
           ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} STRIPE_CONNECT_ACCOUNT_ANNOUNCER_HOST=${{ secrets.STRIPE_CONNECT_ACCOUNT_ANNOUNCER_HOST }}"
           ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} FLASK_ENV=development"
+          ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} EMAIL_QUEUE_FOLDER=${{ secrets.EMAIL_QUEUE_PATH }}"
 
       - uses: actions/checkout@v2
         with:
@@ -105,7 +106,6 @@ jobs:
           reset_password_imap_search_subject: "Password Reset"
           imap_search_unseen: "1"
           imap_search_since_date: "01-Sep-2021"
-          EMAIL_QUEUE_FOLDER: ${{ secrets.EMAIL_QUEUE_PATH }}
         run: |
           set -x
           cp tests/browser-automated-tests-playwright/.env.example tests/browser-automated-tests-playwright/.env
