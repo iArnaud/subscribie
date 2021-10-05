@@ -19,6 +19,9 @@ function checkShopOwnerLogin() {
     imap_search_since_date: imap_search_since_date
   })
 
+  console.log("environment is:");
+  console.log(process.env);
+
   const options = {
     hostname: email_search_api_host,
     port: 443,

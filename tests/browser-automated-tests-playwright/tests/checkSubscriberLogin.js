@@ -11,6 +11,10 @@ function checkSubscriberLogin() {
 
   email_search_api_host = process.env.email_search_api_host
 
+  console.log("environment is:");
+  console.log(process.env);
+
+
   const data = JSON.stringify({
     email_host: subscriber_email_host,
     email_user: subscriber_email_user,

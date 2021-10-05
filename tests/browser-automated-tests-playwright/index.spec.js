@@ -154,8 +154,17 @@ test.describe("Subscribie tests:", () => {
         // Stripe onboarding verification complete
         const stripe_completion_content = await page.textContent('text="Other information provided"');
         if (expect(stripe_completion_content === "Other information provided")) {
-          await new Promise(x => setTimeout(x, 1000));
-          await page.click('button:has-text("Submit")');
+          await new Promise(x => setTimeout(x, 5000));
+          let submitButtonReviewDetailsStage = await page.evaluate(() => document.body.textContent);
+
+          // English GB
+          if (submitButtonReviewDetailsStage.includes("Done")) {
+              await page.click('button:has-text("Done")');
+          } else {
+          // English US
+              await page.click('button:has-text("Submit")');
+          }
+
         }
 
       console.log("Announce stripe account automatically visiting announce url. In prod this is called via uwsgi cron");
