@@ -113,7 +113,6 @@ jobs:
         run: |
           set -x
           cp tests/browser-automated-tests-playwright/.env.example tests/browser-automated-tests-playwright/.env
-          cp .env.example .env
           cd tests/browser-automated-tests-playwright; npx playwright test --grep-invert @704 --update-snapshots
 
       - uses: actions/upload-artifact@v2
