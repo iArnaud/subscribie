@@ -1,6 +1,7 @@
 const https = require('https');
 
 function checkSubscriberLogin() {
+  console.log("executing checkSubscribierLogin")
   subscriber_email_host = process.env.subscriber_email_host
   subscriber_email_user = process.env.subscriber_email_user
   subscriber_email_password = process.env.subscriber_email_password
