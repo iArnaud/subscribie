@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 //Subscribie tests
-test.describe.serial("Subscribie tests:", () => {
+test.describe.serial("Subscribie tests worker 1:", () => {
   test.beforeEach(async ({ page }) => {
     //Login
     await page.goto('/auth/login');

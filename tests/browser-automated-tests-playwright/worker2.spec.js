@@ -1,5 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
+
+test.describe.serial("Subscribie tests worker 2:", () => {
+
 test.beforeEach(async ({ page }) => {
   //Login
   await page.goto('/auth/login');
@@ -25,4 +28,4 @@ test.beforeEach(async ({ page }) => {
 
   order_plan_cooling_off = require('./tests/133_subscriber_order_plan_with_cooling_off');
 
-
+});

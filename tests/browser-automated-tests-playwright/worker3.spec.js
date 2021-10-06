@@ -1,27 +1,31 @@
 const { test, expect } = require('@playwright/test');
 
-test.beforeEach(async ({ page }) => {
-    //Login
-    await page.goto('/auth/login');
-    await page.fill('#email', 'admin@example.com');
-    await page.fill('#password', 'password');
-    await page.click('#login');
-    
-    const content = await page.textContent('.card-title')
-    expect(content === 'Checklist'); // If we see "Checklist", we're logged in to admin
-  }); 
-  clear_DB = require('./tests/clear_db');
+test.describe.serial("Subscribie tests worker 3:", () => {
 
-  categories_creation = require('./tests/452_shop_owner_categories_creation');
+  test.beforeEach(async ({ page }) => {
+      //Login
+      await page.goto('/auth/login');
+      await page.fill('#email', 'admin@example.com');
+      await page.fill('#password', 'password');
+      await page.click('#login');
+      
+      const content = await page.textContent('.card-title')
+      expect(content === 'Checklist'); // If we see "Checklist", we're logged in to admin
+    }); 
+    clear_DB = require('./tests/clear_db');
 
-  private_page_creation = require('./tests/334_shop_owner_private_page_creation');
+    categories_creation = require('./tests/452_shop_owner_categories_creation');
 
-  public_page_creation = require('./tests/121_shop_owner_public_page_creation');
+    private_page_creation = require('./tests/334_shop_owner_private_page_creation');
 
-  slogan_creation = require('./tests/212_shop_owner_slogan_creation');
+    public_page_creation = require('./tests/121_shop_owner_public_page_creation');
 
-  change_shop_colour = require('./tests/387_shop_owner_change_shop_colour');
+    slogan_creation = require('./tests/212_shop_owner_slogan_creation');
 
-  adding_vat = require('./tests/463_shop_owner_adding_vat');
+    change_shop_colour = require('./tests/387_shop_owner_change_shop_colour');
 
-  ordering_plan_with_VAT = require('./tests/463_subscriber_ordering_plan_with_VAT');
+    adding_vat = require('./tests/463_shop_owner_adding_vat');
+
+    ordering_plan_with_VAT = require('./tests/463_subscriber_ordering_plan_with_VAT');
+
+  });

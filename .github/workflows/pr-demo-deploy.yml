@@ -103,6 +103,7 @@ jobs:
           PLAYWRIGHT_HOST: http://${{ github.head_ref }}.pcpink.co.uk/
           PLAYWRIGHT_SLOWMO: 500
           PLAYWRIGHT_HEADLESS: true
+          RETRY: 0
           subscriber_email_host: ${{ secrets.SUBSCRIBER_EMAIL_HOST }}
           subscriber_email_user: ${{ secrets.SUBSCRIBER_EMAIL_USER }}
           subscriber_email_password: ${{ secrets.SUBSCRIBER_EMAIL_PASSWORD }}
