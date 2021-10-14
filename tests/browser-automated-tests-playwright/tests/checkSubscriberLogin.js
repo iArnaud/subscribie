@@ -2,31 +2,31 @@ const https = require('https');
 
 function checkSubscriberLogin() {
   console.log("executing checkSubscribierLogin")
-  subscriber_email_host = process.env.subscriber_email_host
-  subscriber_email_user = process.env.subscriber_email_user
-  subscriber_email_password = process.env.subscriber_email_password
-  reset_password_imap_search_subject = process.env.reset_password_imap_search_subject
-  imap_search_unseen = process.env.imap_search_unseen
-  imap_search_since_date = process.env.imap_search_since_date
+  EMAIL_HOST = process.env.EMAIL_HOST
+  SUBSCRIBER_EMAIL_USER = process.env.SUBSCRIBER_EMAIL_USER
+  SUBSCRIBER_EMAIL_PASSWORD = process.env.SUBSCRIBER_EMAIL_PASSWORD
+  RESET_PASSWORD_IMAP_SEARCH_SUBJECT = process.env.RESET_PASSWORD_IMAP_SEARCH_SUBJECT
+  IMAP_SEARCH_UNSEEN = process.env.IMAP_SEARCH_UNSEEN
+  IMAP_SEARCH_SINCE_DATE = process.env.IMAP_SEARCH_SINCE_DATE
 
-  email_search_api_host = process.env.email_search_api_host
+  EMAIL_SEARCH_API_HOST = process.env.EMAIL_SEARCH_API_HOST
 
   console.log("environment is:");
   console.log(process.env);
 
 
   const data = JSON.stringify({
-    email_host: subscriber_email_host,
-    email_user: subscriber_email_user,
-    email_password: subscriber_email_password,
-    imap_search_subject: reset_password_imap_search_subject,
-    imap_search_unseen: imap_search_unseen,
-    imap_search_since_date: imap_search_since_date
+    EMAIL_HOST: EMAIL_HOST,
+    SUBSCRIBER_EMAIL_USER: SUBSCRIBER_EMAIL_USER,
+    SUBSCRIBER_EMAIL_PASSWORD: SUBSCRIBER_EMAIL_PASSWORD,
+    RESET_PASSWORD_IMAP_SEARCH_SUBJECT: RESET_PASSWORD_IMAP_SEARCH_SUBJECT,
+    IMAP_SEARCH_UNSEEN: IMAP_SEARCH_UNSEEN,
+    IMAP_SEARCH_SINCE_DATE: IMAP_SEARCH_SINCE_DATE
   })
 
 
   const options = {
-    hostname: email_search_api_host,
+    hostname: EMAIL_SEARCH_API_HOST,
     port: 443,
     path: '/search-email',
     method: 'POST',

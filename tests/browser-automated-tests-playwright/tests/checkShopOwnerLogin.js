@@ -1,29 +1,29 @@
 const https = require('https');
 
 function checkShopOwnerLogin() {
-  email_host = process.env.email_host
-  email_user = process.env.email_user
-  email_password = process.env.email_password
-  imap_search_subject = process.env.imap_search_subject
-  imap_search_unseen = process.env.imap_search_unseen
-  imap_search_since_date = process.env.imap_search_since_date
+  EMAIL_HOST = process.env.EMAIL_HOST
+  SHOP_OWNER_TEST_EMAIL = process.env.SHOP_OWNER_TEST_EMAIL
+  SHOP_OWNER_EMAIL_PASSWORD = process.env.SHOP_OWNER_EMAIL_PASSWORD
+  IMAP_SEARCH_SUBJECT_MAGIC_LOGIN = process.env.IMAP_SEARCH_SUBJECT_MAGIC_LOGIN
+  IMAP_SEARCH_UNSEEN = process.env.IMAP_SEARCH_UNSEEN
+  IMAP_SEARCH_SINCE_DATE = process.env.IMAP_SEARCH_SINCE_DATE
 
-  email_search_api_host = process.env.email_search_api_host
+  EMAIL_SEARCH_API_HOST = process.env.EMAIL_SEARCH_API_HOST
 
   const data = JSON.stringify({
-    email_host: email_host,
-    email_user: email_user,
-    email_password: email_password,
-    imap_search_subject: imap_search_subject,
-    imap_search_unseen: imap_search_unseen,
-    imap_search_since_date: imap_search_since_date
+    EMAIL_HOST: EMAIL_HOST,
+    SHOP_OWNER_TEST_EMAIL: SHOP_OWNER_TEST_EMAIL,
+    SHOP_OWNER_EMAIL_PASSWORD: SHOP_OWNER_EMAIL_PASSWORD,
+    IMAP_SEARCH_SUBJECT_MAGIC_LOGIN: IMAP_SEARCH_SUBJECT_MAGIC_LOGIN,
+    IMAP_SEARCH_UNSEEN: IMAP_SEARCH_UNSEEN,
+    IMAP_SEARCH_SINCE_DATE: IMAP_SEARCH_SINCE_DATE
   })
 
   console.log("environment is:");
   console.log(process.env);
 
   const options = {
-    hostname: email_search_api_host,
+    hostname: EMAIL_SEARCH_API_HOST,
     port: 443,
     path: '/search-email',
     method: 'POST',
