@@ -5,7 +5,7 @@ import { PlaywrightTestConfig } from '@playwright/test';
 const PLAYWRIGHT_HEADLESS = process.env.PLAYWRIGHT_HEADLESS.toLocaleLowerCase() == "true" || false;
 const PLAYWRIGHT_HOST = process.env.PLAYWRIGHT_HOST;
 const PLAYWRIGHT_SLOWMO = parseInt(process.env.PLAYWRIGHT_SLOWMO);
-const RETRY = parseInt(process.env.RETRY);
+const PLAYWRIGHT_MAX_RETRIES = parseInt(process.env.PLAYWRIGHT_MAX_RETRIES);
 
 const { devices } = require('@playwright/test');
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
@@ -13,8 +13,8 @@ const config: PlaywrightTestConfig = {
   testDir: 'tests',
   testDir: '../browser-automated-tests-playwright',
   timeout: 180000,
-  retries: RETRY,
-  workers: 3, 
+  retries: PLAYWRIGHT_MAX_RETRIES,
+  workers: 3,
   use: {
 
     baseURL: PLAYWRIGHT_HOST,
@@ -24,20 +24,20 @@ const config: PlaywrightTestConfig = {
       slowMo: PLAYWRIGHT_SLOWMO,
 
     },
-    video:"on",
-    },
+    video: "on",
+  },
   projects: [
     {
-     name: 'Desktop Chromium',
+      name: 'Desktop Chromium',
       use: {
         browserName: 'chromium',
       },
     },
-   //Test against mobile viewports.
-   // {
-   //   name: 'Mobile Safari',
-   //   use: devices['iPhone 12'],
-   // },
+    //Test against mobile viewports.
+    // {
+    //   name: 'Mobile Safari',
+    //   use: devices['iPhone 12'],
+    // },
   ],
 };
 

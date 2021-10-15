@@ -1,12 +1,13 @@
 const { test, expect } = require('@playwright/test');
 const checkSubscriberLogin= require('./checkSubscriberLogin.js');
-const TEST_SUBSCRIBER_EMAIL = process.env.subscriber_email_user;
+const SUBSCRIBER_EMAIL_USER = process.env.SUBSCRIBER_EMAIL_USER;
 
 
 test('@623@subscriber@reset password receives email', async ({ page }) => {
 
+
   await page.goto("/account/forgot-password");
-  await page.fill('#email', TEST_SUBSCRIBER_EMAIL);
+  await page.fill('#email', SUBSCRIBER_EMAIL_USER);
   await page.click("text=Submit");
   await new Promise(r => setTimeout(r, 5000));
   checkSubscriberLogin.checkSubscriberLogin();
@@ -25,7 +26,7 @@ test('@623@subscriber@reset password receives email', async ({ page }) => {
   console.log("password changed");
   //login in as subscriber
   await page.goto("/account/login");
-  await page.fill('#email', TEST_SUBSCRIBER_EMAIL);
+  await page.fill('#email', SUBSCRIBER_EMAIL_USER);
   await page.fill('#password', 'password');
   await page.click('text=Sign In');
   await page.textContent('.card-title') === "Your subscriptions";

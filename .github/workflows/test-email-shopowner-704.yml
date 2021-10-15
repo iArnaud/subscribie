@@ -30,14 +30,14 @@ jobs:
         env:
           PLAYWRIGHT_HEADLESS: true
           TEST_SHOP_OWNER_LOGIN_URL_ISSUE_704: ${{ secrets.SHOP_OWNER_LOGIN_URL_ISSUE_704 }}
-          TEST_SHOP_OWNER_EMAIL_ISSUE_704: ${{ secrets.SHOP_OWNER_EMAIL_ISSUE_704 }}
-          email_host: ${{ secrets.EMAIL_HOST_ISSUE_704 }}
-          email_user: ${{ secrets.EMAIL_USER_ISSUE_704 }}
-          email_password: ${{ secrets.EMAIL_PASSWORD_ISSUE_704 }}
-          email_search_api_host: ${{ secrets.EMAIL_SEARCH_API_HOST_ISSUE_704 }}
-          imap_search_subject: "Subscribie Magic Login"
-          imap_search_unseen: "1"
-          imap_search_since_date: "01-Sep-2021"
+          SHOP_OWNER_TEST_EMAIL: ${{ secrets.SHOP_OWNER_TEST_EMAIL }}
+          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+          SHOP_OWNER_TEST_EMAIL: ${{ secrets.SHOP_OWNER_TEST_EMAIL }}
+          SHOP_OWNER_EMAIL_PASSWORD: ${{ secrets.SHOP_OWNER_EMAIL_PASSWORD }}
+          EMAIL_SEARCH_API_HOST: ${{ secrets.EMAIL_SEARCH_API_HOST }}
+          IMAP_SEARCH_SUBJECT_MAGIC_LOGIN: "Subscribie Magic Login"
+          IMAP_SEARCH_UNSEEN: "1"
+          IMAP_SEARCH_SINCE_DATE: "01-Sep-2021"
         run: |
           set -x
           cd tests/browser-automated-tests-playwright; npx playwright test --grep @704
