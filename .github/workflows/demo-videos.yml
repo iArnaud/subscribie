@@ -54,6 +54,10 @@ jobs:
             ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} STRIPE_TEST_PUBLISHABLE_KEY=${{ secrets.STRIPE_TEST_PUBLISHABLE_KEY }}"
             ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} STRIPE_CONNECT_ACCOUNT_ANNOUNCER_HOST=${{ secrets.STRIPE_CONNECT_ACCOUNT_ANNOUNCER_HOST }}"
             ssh dokku@$DOKKU_HOST -C "dokku config:set --no-restart ${{ env.SUBDOMAIN }} FLASK_ENV=development"
+            # Create shared mount point
+            ssh dokku@$DOKKU_HOST -C "mkdir -p emails-queue"
+            ssh dokku@$DOKKU_HOST -C "dokku storage:mount ${{ env.SUBDOMAIN }} ${{ secrets.HOST_EMAIL_QUEUE_FOLDER }}:${{ secrets.DOKKU_EMAIL_QUEUE_FOLDER }}" | true
+          
 
         - uses: actions/checkout@v2
           with:
@@ -78,17 +82,17 @@ jobs:
             sudo npx playwright install-deps 
         - name: Run & Record browser automated tests (Playwright)
           env:
-              PLAYWRIGHT_HOST: http://${{ github.event.repository.default_branch }}.pcpink.co.uk/
-              PLAYWRIGHT_SLOWMO: 2000
-              PLAYWRIGHT_HEADLESS: true
-              subscriber_email_host: ${{ secrets.SUBSCRIBER_EMAIL_HOST }}
-              subscriber_email_user: ${{ secrets.SUBSCRIBER_EMAIL_USER }}
-              subscriber_email_password: ${{ secrets.SUBSCRIBER_EMAIL_PASSWORD }}
-              email_search_api_host: ${{ secrets.EMAIL_SEARCH_API_HOST_ISSUE_704 }}
-              reset_password_imap_search_subject: "Password Reset"
-              imap_search_unseen: "1" 
-              imap_search_since_date: "01-Sep-2021"
-              EMAIL_QUEUE_FOLDER: ${{ secrets.EMAIL_QUEUE_PATH }}
+          PLAYWRIGHT_HOST: http://${{ github.head_ref }}.pcpink.co.uk/
+          PLAYWRIGHT_SLOWMO: 500
+          PLAYWRIGHT_HEADLESS: true
+          PLAYWRIGHT_MAX_RETRIES: 0
+          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+          SUBSCRIBER_EMAIL_USER: ${{ secrets.SUBSCRIBER_EMAIL_USER }}
+          SUBSCRIBER_EMAIL_PASSWORD: ${{ secrets.SUBSCRIBER_EMAIL_PASSWORD }}
+          EMAIL_SEARCH_API_HOST: ${{ secrets.EMAIL_SEARCH_API_HOST }}
+          RESET_PASSWORD_IMAP_SEARCH_SUBJECT: "Subscribie Password Reset"
+          IMAP_SEARCH_UNSEEN: "1"
+          IMAP_SEARCH_SINCE_DATE: "01-Sep-2021"
 
           run: |
             set -x
