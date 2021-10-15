@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const TEST_SUBSCRIBER_EMAIL = process.env.subscriber_email_user;
+const SUBSCRIBER_EMAIL_USER = process.env.SUBSCRIBER_EMAIL_USER;
 
 test.describe("order plan with cooling off:", () => {
     test("@133@subscriber@Ordering plan with cooling off feature", async ({ page }) => {
@@ -12,7 +12,7 @@ test.describe("order plan with cooling off:", () => {
         // Fill in order form
         await page.fill('#given_name', 'John');
         await page.fill('#family_name', 'Smith');
-        await page.fill('#email', TEST_SUBSCRIBER_EMAIL);
+        await page.fill('#email', SUBSCRIBER_EMAIL_USER);
         await page.fill('#mobile', '07123456789');
         await page.fill('#address_line_one', '123 Short Road');
         await page.fill('#city', 'London');

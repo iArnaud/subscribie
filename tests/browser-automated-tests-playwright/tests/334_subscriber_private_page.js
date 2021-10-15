@@ -1,13 +1,13 @@
 const { test, expect } = require('@playwright/test');
 const checkSubscriberLogin= require('./checkSubscriberLogin.js');
-const TEST_SUBSCRIBER_EMAIL = process.env.subscriber_email_user;
+const SUBSCRIBER_EMAIL_USER = process.env.SUBSCRIBER_EMAIL_USER;
 
 
 test('@334@subscriber@checking for private page', async ({ page }) => {
  
   //login in as subscriber
   await page.goto("/account/login");
-  await page.fill('#email', TEST_SUBSCRIBER_EMAIL);
+  await page.fill('#email', SUBSCRIBER_EMAIL_USER);
   await page.fill('#password', 'password');
   await page.click('text=Sign In');
   await page.textContent('.card-title') === "Your subscriptions";

@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const TEST_SUBSCRIBER_EMAIL = process.env.subscriber_email_user;
+const SUBSCRIBER_EMAIL_USER = process.env.SUBSCRIBER_EMAIL_USER;
 
 test("@463@subscriber@Ordering plan with VAT", async ({ page }) => {
         console.log("Ordering plan with only recurring charge + VAT...");
@@ -10,7 +10,7 @@ test("@463@subscriber@Ordering plan with VAT", async ({ page }) => {
         // Fill in order form
         await page.fill('#given_name', 'John');
         await page.fill('#family_name', 'Smith');
-        await page.fill('#email', TEST_SUBSCRIBER_EMAIL);
+        await page.fill('#email', SUBSCRIBER_EMAIL_USER);
         await page.fill('#mobile', '07123456789');
         await page.fill('#address_line_one', '123 Short Road');
         await page.fill('#city', 'London');
